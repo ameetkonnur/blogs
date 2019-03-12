@@ -1,25 +1,18 @@
 ---
-title: Typograhy example
+title: host a react app out of azure blob storage
 ---
-![Test](/emerald/img/img-test.png "Test")
-Lorem ipsum dolor sit amet, [consectetur adipisicing](http://www.example.com) elit. Id, aliquam magni et officiis nemo nihil aliquid placeat alias. Eum voluptates ducimus, nobis ex illum laboriosam quidem corrupti impedit ratione in voluptatum amet beatae facilis temporibus voluptate praesentium voluptatibus! At ab, iusto error amet eveniet debitis ipsa recusandae possimus minima sunt itaque, nulla ducimus officia, consequatur ipsum laudantium magnam hic fuga vero incidunt nostrum. Commodi, perspiciatis ut nostrum fugit nulla cumque voluptate harum nemo accusamus? 
+![The What](/emerald/img/img-test.png "Test")
+Wouldnt it be cool if you could host your entire Web Application front end without any Web Server !, [Github App](https://yogimonkey.z29.web.core.windows.net/). This App runs directly on Azure Blob Storage without any Web Server. You would say its just static page. No, its Web Application that calls an Github API to get user information and displays it on the page. Yes it's possible but why to do it ?
 
-## This is a h2
+## The Why
 
-### h3, h4, h5 and h6 have the same style.
+- It saves a ton of money hosting & managing a Web Server
+- It scales effeciently because it's serverless
+- It integrates well with CDN to offload user traffic
+- It can also handle state information to make your backend API's truly stateless
+- Yeah and its cool!
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas sed quo atque *perspiciatis*. Eius cum possimus, maxime unde, asperiores neque blanditiis molestiae ipsa odit. **Laboriosam**, error! Ipsa officia magnam at ratione commodi porro nulla consequuntur eum quia nisi officiis cupiditate reprehenderit provident facilis rem, nobis quidem fugiat, et! Tempore maiores reprehenderit laboriosam rerum? 
 
-> This is a blockquote
+## The How
 
-### Unordered list
-- list 1
-- list 2
-- list 3
-- list 4
-
-### Ordered list
-1. one
-2. two
-3. three
-4. four
+Its relatively easy to do this. All you need is some basic JS (Javascript) expertise and a know how about how HTML, CSS, Async API calls work. Rest all of the work is done by Azure Blob Storage.
