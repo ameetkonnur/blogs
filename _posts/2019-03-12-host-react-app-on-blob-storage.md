@@ -34,17 +34,28 @@ Install react.js on your machine. You can do this by opening command line (or ba
 I would strongly recommend you go through https://reactjs.org/tutorial/tutorial.html to understand React.js architecture and basics. This post will not cover too much about React concepts but there are many resources on the Internet to understand React. Pluralsight has got a few good courses too. These resources are summarized at the end of the post.
 
 - Step 2
+
 On the same command line run "create-react-app <myappname>". This will create a folder with the name of the Application and will install dependencies for creating a React based application. You can explore the folder structure to understand how these components interact with each other.
 
-![Image Alt](https://github.com/ameetkonnur/blogs/raw/master/img/react-1.gif)
+![create react app](https://github.com/ameetkonnur/blogs/raw/master/img/react-1.gif)
+
+![folder structure](https://github.com/ameetkonnur/blogs/raw/master/img/react-2.gif)
 
 - Step 3
 
 On the command line run "npm start". This will run the React app and open up the browser and take you to the default page.
 
+![npm start](https://github.com/ameetkonnur/blogs/raw/master/img/react-3.gif)
+
+![App in Browser](https://github.com/ameetkonnur/blogs/raw/master/img/react-4.gif)
+
 - Step 4
 
 Before we deploy the App to storage, we will need to get a deployable code which works directly off storage. For that on the command line run "npm run build". This creates a deployable code under the folder "build" in the same directory.
+
+![npm run build](https://github.com/ameetkonnur/blogs/raw/master/img/react-5.gif)
+
+![build folder](https://github.com/ameetkonnur/blogs/raw/master/img/react-6.gif)
 
 You can now copy the contents entire build folder to any Web Server and the application would run as is. But the entire point of this blog is not to use the Web Server. That's where Azure Blob Storage comes in. Let's now move to the next steps where we create Azure Blob Storage, copy the files & create static website out of it.
 
