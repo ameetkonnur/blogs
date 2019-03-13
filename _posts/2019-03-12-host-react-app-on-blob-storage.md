@@ -4,11 +4,11 @@ title: host a react app out of azure blob storage
 
 ## The What
 
-Wouldnt it be cool if you could host your entire Web Application front end without any Web Server!!, [Github App](https://yogimonkey.z29.web.core.windows.net/). This App runs directly on Azure Blob Storage without any Web Server. You would say its just static page. No, its Web Application that takes an input calls an Github API to get user information and displays it on the page. Now that it's possible, why do it ?
+Wouldnt it be cool if you could host your entire Web Application front end without any Web Server!!, [Github App](https://yogimonkey.z29.web.core.windows.net/). This App runs directly on Azure Blob Storage without any Web Server. You would say its just static page. No, its a Web Application that takes an input calls a Github API to get user information and displays it on the page. Thats okay but, why do it ?
 
 ## The Why
 
-- It saves a ton of money not hosting & managing a Web Server(s)
+- It saves a ton of money not hosting & managing Web Server(s)
 - It scales effeciently because it's serverless
 - It integrates well with CDN to offload user traffic
 - It can also handle state information to make your backend API's truly stateless
@@ -57,7 +57,43 @@ Before we deploy the App to storage, we will need to get a deployable code which
 
 ![build folder](https://github.com/ameetkonnur/blogs/raw/master/img/react-6.gif)
 
-You can now copy the contents entire build folder to any Web Server and the application would run as is. But the entire point of this blog is not to use the Web Server. That's where Azure Blob Storage comes in. Let's now move to the next steps where we create Azure Blob Storage, copy the files & create static website out of it.
+You can now copy the contents entire build folder to any Web Server and the application would run as is. But wait!, the entire point of this blog is not to use the Web Server. That's where Azure Blob Storage comes in. Let's now move to the next steps where we create Azure Blob Storage, copy the files & create static website out of it.
+
+- Step 5
+
+Go to https://portal.azure.com and login. Click on the Create Resource + sign. Create a storage account. (https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
+
+- Step 6
+
+Go to the storage account and navigate on the menu blade to the "static website" option.
+Enable the static site option and put in the index.html as the default document. Copy the URL shown up for the static site.
+
+![storage static website](https://github.com/ameetkonnur/blogs/raw/master/img/react-7.gif)
+
+On the storage account go to the "blob" option and you will see a container with the name "$web". You need copy the content of the build folder from step 4 to this container.
+
+![copy file to $web folder](https://github.com/ameetkonnur/blogs/raw/master/img/react-8.gif)
+
+Go to your browser and navigate the URL copied earlier and voila !! you have your website running.
+
+- Step 7
+
+Let's take it notch up. Let's add a text box and take some input and call a backend API based on that input and display the result back. This what most Web Applications do. Usually this is done with a combination of Client side and Server side code but since we dont have a web server here, we dont have a Server side. That's where React comes in and saves the day. React has a beautiful framework to make dynamic single page websites (SPA) that can interact with backend systems and make what looks a static website with JS, HTML & CSS look dynamic.
+
+In this case i have taken a simple use case where a user enters a Github username and the App fetches the basic information about the user and displays this on the page.
+
+![Github User Info App](https://github.com/ameetkonnur/blogs/raw/master/img/react-9.gif)
+
+I will not go into explaining the code for the above App. Once you play around with React a bit, you will understand it.
+
+Enjoy!
+
+# Reference
+
+Github User Info App Source Code : https://github.com/ameetkonnur/github-user-info-react-app
+React.js Basics : https://reactjs.org/docs/getting-started.html
+React.js Pluralsight course : https://www.pluralsight.com/paths/react
+
 
 
 
