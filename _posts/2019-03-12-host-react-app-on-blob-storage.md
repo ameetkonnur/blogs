@@ -19,14 +19,14 @@ Wouldnt it be cool if you could host your entire Web Application front end witho
 
 Its relatively easy to do this. All you need is some basic understanding of React.js (i hear Vue.js also works on a similar concept), and a know how about how HTML, CSS, Async API calls work. Rest all of the work is done by React.js & Azure Blob Storage. Obviously you can build more complex applications extending this basic know how of how to run web pages (that use JS, HTML & CSS) from Blob Storage. There are quite a few customer who have done this on AWS using S3 buckets for their React apps. Thats the inspiration for me. 
 
-# Pre-requisites
+### Pre-requisites
 
 What you need on your machine is
 - node.js (you can install it from https://nodejs.org)
 - Some editor like VS Code, Sublime etc (get VS Code from https://code.visualstudio.com/)
 - Azure Subscription with rights to create Storage Account (get a free trail from https://azure.microsoft.com)
 
-# Set it up
+### Set it up
 
 - Step 1
 
