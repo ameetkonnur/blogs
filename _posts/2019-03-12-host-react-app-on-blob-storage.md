@@ -86,7 +86,9 @@ In this case i have taken a simple use case where a user enters a Github usernam
 
 I will not go into explaining the code for the above App. Once you play around with React a bit, you will understand it.
 
-Enjoy! :smile:
+Enjoy! 
+
+:+1:
 
 # Reference
 
