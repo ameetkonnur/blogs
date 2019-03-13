@@ -22,16 +22,16 @@ Its relatively easy to do this. All you need is some basic understanding of Reac
 ### Pre-requisites
 
 What you need on your machine is
-- node.js (you can install it from https://nodejs.org)
-- Some editor like VS Code, Sublime etc (get VS Code from https://code.visualstudio.com/)
-- Azure Subscription with rights to create Storage Account (get a free trail from https://azure.microsoft.com)
+- node.js (you can install it from <https://nodejs.org>)
+- Some editor like VS Code, Sublime etc (get VS Code from <https://code.visualstudio.com/>)
+- Azure Subscription with rights to create Storage Account (get a free trail from <https://azure.microsoft.com>)
 
 ### Set it up
 
 - Step 1
 
 Install react.js on your machine. You can do this by opening command line (or bash) & running "npm install create-react-app"
-I would strongly recommend you go through https://reactjs.org/tutorial/tutorial.html to understand React.js architecture and basics. This post will not cover too much about React concepts but there are many resources on the Internet to understand React. Pluralsight has got a few good courses too. These resources are summarized at the end of the post.
+I would strongly recommend you go through <https://reactjs.org/tutorial/tutorial.html> to understand React.js architecture and basics. This post will not cover too much about React concepts but there are many resources on the Internet to understand React. Pluralsight has got a few good courses too. These resources are summarized at the end of the post.
 
 - Step 2
 
@@ -61,7 +61,7 @@ You can now copy the contents entire build folder to any Web Server and the appl
 
 - Step 5
 
-Go to https://portal.azure.com and login. Click on the Create Resource + sign. Create a storage account. (https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
+Go to <https://portal.azure.com> and login. Click on the Create Resource + sign. Create a storage account. (<https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal>)
 
 - Step 6
 
@@ -86,13 +86,15 @@ In this case i have taken a simple use case where a user enters a Github usernam
 
 I will not go into explaining the code for the above App. Once you play around with React a bit, you will understand it.
 
-Enjoy!
+Enjoy! :smile:
 
 # Reference
 
-Github User Info App Source Code : https://github.com/ameetkonnur/github-user-info-react-app
-React.js Basics : https://reactjs.org/docs/getting-started.html
-React.js Pluralsight course : https://www.pluralsight.com/paths/react
+Github User Info App Source Code : <https://github.com/ameetkonnur/github-user-info-react-app>
+
+React.js Basics : <https://reactjs.org/docs/getting-started.html>
+
+React.js Pluralsight course : <https://www.pluralsight.com/paths/react>
 
 
 
