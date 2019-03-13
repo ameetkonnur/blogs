@@ -33,8 +33,7 @@ I would strongly recommend you go through https://reactjs.org/tutorial/tutorial.
 - Step 2
 On the same command line run "create-react-app <myappname>". This will create a folder with the name of the Application and will install dependencies for creating a React based application. You can explore the folder structure to understand how these components interact with each other.
 
-![create-react-app](/img/react-1.gif)
-
+[[/img/react-1.gif]]
 
 - Step 3
 On the command line run "npm start". This will run the React app and open up the browser and take you to the default page.
