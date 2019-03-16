@@ -32,4 +32,35 @@ This solution uses two data sources provided by Azure.
 It takes data from the above two sources and stores them in custom mySQL database. These data pull jobs have been written in Python.
 Once the data is in mySQL database, we have a set of pre-configured reports using apache superset (<https://superset.incubator.apache.org/>) which is a cool open source visualization tool.
 
-The python jobs and apache superset are shipped in a container image that can be run anywhere. For the mySQL database, you can run it anywhere. Specifically for Azure deployment, i would recommend Azure Container Instance & Azure Database for mySQL.
+The python jobs and apache superset are shipped in a container image that can be run anywhere. For the mySQL database, you can run it anywhere. Specifically for Azure deployment, i would recommend Azure Container Instances & Azure Database for mySQL, but you could deploy all of this in a single VM if needed.
+
+### pre-requisites
+
+- Azure Subscription to deploy the Solution (optional if you are to deploy it on-premises)
+- Azure Enrollment Billing API Key (<https://docs.microsoft.com/en-us/azure/billing/billing-enterprise-api#enabling-data-access-to-the-api>)
+- Get the Azure Enrollment No from <https://ea.azure.com> (requires EA Administrator Login)
+- SMTP Server details (for automated email alerts)
+- Access to the Azure AD in which these subscriptions are a part of to create a service principal (SPN) to call Graph API's.
+
+
+- Step 1
+
+Get the Azure EA Billing API Key by following the instructions at <https://docs.microsoft.com/en-us/azure/billing/billing-enterprise-api#enabling-data-access-to-the-api>
+
+Next create a service principal in your Azure AD with atleast read permissions to all the subscriptions for which you want the data.
+Follow steps at <https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest>. Copy the details on Application ID, Application Secret, Tenant ID which we will use later while setting the configuration for the Application.
+
+- Step 2
+
+Create a mySQL DB. If you are using Azure Database for mySQL DB follow the steps at <https://docs.microsoft.com/en-us/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal>. You will have to whitelist the Container Instance / Virtual Machine Public IP in the mySQL Server Firewall to allow the Application to access it.
+
+- Step 3
+
+The Application is packaged as a Docker Container. To run the Application you would require an environment that supports Containers. On Azure a quick way to set this up would be to use Azure WebApp for Containers or Azure Container Instances both of which can host an image from a public Docker Registry or a private registry. If you are running this on a Linux Virtual Machine you will need to install Docker Run Time. You can do this by following the instructions at <https://docs.docker.com/install/>.
+
+Running Azure WebApp For Containers : In the step where you select the Container Image put in ameetk/azure-billing-alerts-app. While this approach would help run the container, for you to configure the container you need to actually SSH into the container. To do so you need to enable the image with SSH.
+Steps for doing the same are mentioned in <https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image#connect-to-web-app-for-containers-using-ssh>
+
+Running Azure Container Instance : In the step where you select the Container Image put in ameetk/azure-billing-alerts-app
+
+Running on a Linux VM : In bash type "docker run -it -p 80:8088 ameetk/azure-billing-alerts-app"
