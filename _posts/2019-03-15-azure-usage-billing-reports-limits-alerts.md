@@ -58,8 +58,11 @@ Create a mySQL DB. If you are using Azure Database for mySQL DB follow the steps
 
 The Application is packaged as a Docker Container. To run the Application you would require an environment that supports Containers. On Azure a quick way to set this up would be to use Azure WebApp for Containers or Azure Container Instances both of which can host an image from a public Docker Registry or a private registry. If you are running this on a Linux Virtual Machine you will need to install Docker Run Time. You can do this by following the instructions at <https://docs.docker.com/install/>.
 
-Running Azure WebApp For Containers : In the step where you select the Container Image put in ameetk/azure-billing-alerts-app. While this approach would help run the container, for you to configure the container you need to actually SSH into the container. To do so you need to enable the image with SSH.
-Steps for doing the same are mentioned in <https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image#connect-to-web-app-for-containers-using-ssh>
+Running Azure WebApp For Containers : In the step where you select the Container Image select Docker Public Repository & put in "ameetk/azure-billing-alerts-app" as the image name. While this approach would help run the container, for you to configure the container you need to actually SSH into the container. To do so you need to enable the image with SSH. Steps for doing the same are mentioned in <https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image#connect-to-web-app-for-containers-using-ssh>
+
+Luckily for you, i have already created an image with SSH server and uploaded to the Docker Hub public repository. The image "ameetk/azure-billing-usage-app" already has the necessary config to support SSH from Azure Portal.
+
+To SSH into the Container, use the SSH option from the Azure Portal for Azure Web App.
 
 Running Azure Container Instance : In the step where you select the Container Image put in ameetk/azure-billing-alerts-app
 
