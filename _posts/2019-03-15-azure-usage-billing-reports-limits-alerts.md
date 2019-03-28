@@ -60,10 +60,29 @@ The Application is packaged as a Docker Container. To run the Application you wo
 
 Running Azure WebApp For Containers : In the step where you select the Container Image select Docker Public Repository & put in "ameetk/azure-billing-alerts-app" as the image name. While this approach would help run the container, for you to configure the container you need to actually SSH into the container. To do so you need to enable the image with SSH. Steps for doing the same are mentioned in <https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image#connect-to-web-app-for-containers-using-ssh>
 
-Luckily for you, i have already created an image with SSH server and uploaded to the Docker Hub public repository. The image "ameetk/azure-billing-usage-app" already has the necessary config to support SSH from Azure Portal.
+Luckily for you, i have already created an image with SSH server and uploaded to the Docker Hub public repository. The image 'ameetk/azure-billing-usage-app' already has the necessary config to support SSH from Azure Portal.
 
 To SSH into the Container, use the SSH option from the Azure Portal for Azure Web App.
+![Connect to Container](https://github.com/ameetkonnur/blogs/raw/master/img/billing-3.gif)
 
-Running Azure Container Instance : In the step where you select the Container Image put in ameetk/azure-billing-alerts-app
 
-Running on a Linux VM : In bash type "docker run -it -p 80:8088 ameetk/azure-billing-alerts-app"
+Running Azure Container Instance : In the step where you select the Container Image put in 'ameetk/azure-billing-alerts-app'.
+Once done you can connect to the container instance using the 'Connect' feature in the Containers setting for Container Instances.
+
+![Connect to Container](https://github.com/ameetkonnur/blogs/raw/master/img/billing-2.gif)
+
+Running on a Linux VM : In bash type "docker run -it -p 80:8088 ameetk/azure-billing-alerts-app".
+Once the container is running you can connect to the container using the below command
+"docker run -it exec <container-id> bash" You can get the <container-id> by issuing a "docker ps" command.
+
+- Step 4
+
+Once you are able to SSH / Connect to the container instance, you will have to set a few configurations for the Application to work.
+
+Check the present working directory. It should be /my-app-code/billing-app
+If you check the contents of this directory you should see a set of files listed in the image above.
+
+The configuration of the application is in the config.sample.json which needs to be updated and renamed to config.json for the application to work.
+Below is a screen shot of the config.json file
+
+![Connect to Container](https://github.com/ameetkonnur/blogs/raw/master/img/billing-4.gif)
