@@ -86,3 +86,63 @@ The configuration of the application is in the config.sample.json which needs to
 Below is a screen shot of the config.json file
 
 ![Connect to Container](https://github.com/ameetkonnur/blogs/raw/master/img/billing-4.gif)
+
+The billing data is pulled on a daily basis (T-2 to accomodate delay in billing reflected) & is stored in a mySQL DB. Once stored the application checks for usage per resourceGroup against thresholds and calculates % against Limits set. The Limits are set as a part of the configuration in a mySQL DB table.
+
+Application Components
+
+getusage.py : Gets usage details from billing API and inserts it into mySQL DB
+
+sendmail.py : Checks against billing limits and sends alerts on usage against billing limits
+
+get-azure-subscription-data.py : Gets information about resources deployed in subscriptions (aggregated data)
+
+config.json : All config parameters including mySQL DB, SMTP & others (rename config.sample.json to config.json)
+
+schema.sql : creates mysql tables and default records
+
+Frequency : .py files Daily configured as CRON jobs
+
+To pull in historical data update the config.json parameters as below
+
+Example if you want last 15 days billing data update the below parameters as shown
+
+"billing_lag":"15", --> for 15 days historical data update this to 15.
+
+"no_of_days":"14", --> add 14 days to above date
+
+Once the above configurations are done the next step is configure the superset configuration to connect to the mySQL DB.
+
+To do that browse the superset portal (url's will be from the above WebApp / Container Instance / lcoal docker run).
+The Administrator username is "admin" and the Password is "password".
+
+Once you are in the portal, click on "Sources --> Tables". You should see an entry called "billingdb".
+Click on Edit Record option (middle) on the left of the entry "billingdb".
+In the 2nd textbox you will see an entry which looks something like the below
+
+"mysql+mysqlconnector://scott%40mysqlsvr01:XXXXXXXXXX@mysqlsvr01.mysql.database.azure.com:3306/billingdb"
+
+Update the SQLAlchemy Connection string with your values for connecting to the mySQL DB. It's in the format
+
+"mysql+mysqlconnector://username@servername:password@serverfqdn:port/billingdb"
+
+You can click on the "Test Connection" option to ensure superset is able to connect to the db. Once done click on "Save" option at the end of the page.
+
+That's it. Set-up is complete.
+
+- Step 5
+
+Once the set-up is done you can browse the superset based portal where you can browse your reports on billing and resources deployed.
+The cron job configured will ensure the 3 .py files run daily and collect data and update the mySQL db.
+
+You can add more reports by using the superset portal. More information on using superset, read <https://superset.incubator.apache.org/tutorial.html>
+
+## note
+
+- As i add more features to this solution, you will have to update your WebApp / Container Instance / Docker with the latest image.
+
+- Do leave your feedback / suggestion on anything that didnt work or any feature that you need.
+
+- Complete source code available at <https://github.com/ameetkonnur/billing-app>
+
+Enjoy!
