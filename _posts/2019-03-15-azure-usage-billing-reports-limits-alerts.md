@@ -86,3 +86,27 @@ The configuration of the application is in the config.sample.json which needs to
 Below is a screen shot of the config.json file
 
 ![Connect to Container](https://github.com/ameetkonnur/blogs/raw/master/img/billing-4.gif)
+
+The data is pulled on a daily basis (T-2 to accomodate delay in billing reflected) & is stored in a mySQL DB. Once stored the application checks for usage per resourceGroup against thresholds and calculates % against Limits set. The Limits are set as a part of the configuration in a mySQL DB table.
+
+Application Components
+
+getusage.py : Gets usage details from billing API and inserts it into mySQL DB
+
+sendmail.py : Checks against limits and sends alerts on usage against limits
+
+get-azure-subscription-data.py : Gets information about azure resources deployed in a subscription (aggregated information)
+
+config.json : All config parameters including mySQL DB, SMTP & others (rename config.sample.json to config.json)
+
+schema.sql : creates mysql tables and default records
+
+Frequency : Daily configured as CRON jobs
+
+To pull in historical billing data update the config.json parameters as below
+
+Example if you want last 15 days data update the below parameters as shown
+
+"billing_lag":"15", --> for 15 days historical data update this to 15.
+
+"no_of_days":"14", --> add 14 days to above date
