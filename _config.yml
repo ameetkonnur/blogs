@@ -1,14 +1,14 @@
 # Site settings
 title: come az u(a)re | A blog on things azure
 description: "A minimal blog site with tips and tricks on Azure"
-url: "http://blog.yogimonkey.ooo"
+url: "http://ameetkonnur.github.io/blogs"
 author:
   name: "Ameet Konnur"
   email: "ameetk@live.in"
-  url: "http://yogimonkey.ooo"
+  url: ""
 
 # Build settings
-baseurl: /blogs/ # Change this to your relative path (ex: /blog/), or leave just a /
+baseurl: /blogs # Change this to your relative path (ex: /blog/), or leave just a /
 markdown: kramdown
 source: .
 destination: ./_site
