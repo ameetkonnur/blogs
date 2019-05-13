@@ -29,7 +29,7 @@ there was always a need for better, faster and cheaper technology as the amount 
 
 so what was the problem with managing growing data with traditional rdbms technology ? actually quite a few
 
-1. rdbms technology was built on a fundamental principle of scale-up which means if we have to store more data, attach more disks to the server, if we have to cater to more users, increase the processor & ram of the server. while this worked well for predictable and non-volumenous growth it wasnt a good model for the exponential growth that was being seen at these new age companies. for most very large traditional companies a few TB's a year growth was the maximum they would see, but for the new age companies they were adding few TB's a month or sometimes every week (this also is called big data now). adding disks and adding processors or shifting to larger server's every few months wasnt a 
+1. rdbms technology was built on a fundamental principle of scale-up which means if we have to store more data, attach more disks to the server, if we have to cater to more users, increase the processor & ram of the server. while this worked well for predictable and non-volumenous growth it wasnt a good model for the exponential growth that was being seen at these new age companies. for most very large traditional companies a few TB's a year growth was the maximum they would see, but for the new age companies they were adding few TB's a month or sometimes every week (this also is called big data now). adding disks and adding processors or shifting to larger server's every few months wasnt a scalable and economically sustainable model.
 
 
 ## how
