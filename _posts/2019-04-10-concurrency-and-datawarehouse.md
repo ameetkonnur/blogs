@@ -38,9 +38,11 @@ OLTP workloads are designed to handle concurreny by making the unit / quantum of
 
 Datawarehouse workloads usually act on large amounts of data with complex calculations (large unit / quantum of work), hence they are designed not to do context switching. if they were to emulate the OLTP architecture to do context switching to support more concurrency the overhead of context switching itself will be large enough to more than offset any gain in concurreny. Datawarehouse systems are hence designed to do a complex job as quickly as possible and then do the next. hence they also are architected to be lower on concurrency.
 
-while there are solutions / patterns to support higher concurrency in datawarehouse systems by introducing intermediate layers like OLAP, scaling out to multiple units of datawarehouse, but at the core datawarehouses will retain the architecture choice of supporting lower concurrency for some time to come (untill another technology disruption like quantum computing hits us)
+while there are solutions / patterns to support higher concurrency in datawarehouse systems by introducing intermediate layers like OLAP, scaling out to multiple units of datawarehouse, but at the core datawarehouses will retain the architecture choice of supporting lower concurrency for now.
 
 hope this gave you some perspective on concurrency and datawarehouse.
+
+to conclude, its not that datawarehouse technologies (like Azure SQL DW) cannot support higher concurrency, they chose not to in order to prioritize query performance. over time they may build new capabilities to support both higher concurrency and similar query performance but the architecture, technology may change. stay tuned to see if Microsoft will announce something this build <https://www.microsoft.com/en-us/build> on this. 
 
 to read more about this you can check <https://docs.microsoft.com/en-us/azure/sql-data-warehouse/memory-and-concurrency-limits#concurrency-maximums> <https://docs.microsoft.com/en-us/azure/sql-data-warehouse/resource-classes-for-workload-management>
 
