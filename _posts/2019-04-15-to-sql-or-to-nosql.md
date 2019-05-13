@@ -29,11 +29,7 @@ there was always a need for better, faster and cheaper technology as the amount 
 
 so what was the problem with managing growing data with traditional rdbms technology ? actually quite a few, but the important ones below
 
-<<<<<<< HEAD
-1. rdbms technology was built on a fundamental principle of scale-up which means if we have to store more data, attach more disks to the server, if we have to cater to more users, increase the processor & ram of the server. while this worked well for predictable and non-volumenous growth it wasnt a good model for the exponential growth that was being seen at these new age companies. for most very large traditional companies a few TB's a year growth was the maximum they would see, but for the new age companies they were adding few TB's a month or sometimes every week (this also is called big data now). adding disks and adding processors or shifting to larger server's every few months wasnt a scalable and economically sustainable model.
-=======
 1. rdbms technology was built on a fundamental principle of scale-up which means if we have to store more data, attach more disks to the server, if we have to cater to more users, increase the processor & ram of the server. while this worked well for predictable and non-volumenous growth it wasnt a good model for the exponential growth that was being seen at these new age companies. for most very large traditional companies a few TB's a year growth was the maximum they would see, but for the new age companies they were adding few TB's a month or sometimes every week (this also is called big data now). adding disks and adding processors or shifting to larger server's every few months wasnt a scalable option. also one had to factor is hardware failures (both availability and recovery) storage corruption etc. there was some answer to this in the form of appliances that promised linear performance increase as they add more compute to the same server / cluster, better availability & somewhat an quicker way to scale.  but this came at a huge cost, lockin in proprietary hardware & not the agility that they were looking at. 
->>>>>>> 912a40cfc649b545ca871718ac1f498b6c41ba46
 
 2. rdbms is great when you know what you are going to store. when what you will store changes very often (every week / day), rdbms isnt great as changing table structures, or creating generic tables /columns isnt easy and may sometimes require downtime or moving data between tables.
 
@@ -50,8 +46,19 @@ all this led to an architecture evolution where you can scale out (instead of sc
 yes rdbms can scale out too but there are a few problems in the approach.
 
 1. native rdbms scale out solutions are very expensive to procure in terms of software licenses & certified hardware (server / storage)
-2. non-native rdbms scale out patterns are hard to implement, harder to maintain. also they may require massive code changes on front end (mostly all nosql implementations also require code changes)
+2. non-native rdbms scale out patterns are hard to implement, harder to maintain. also they may require massive code changes on front end (mostly all nosql implementations also require a different approach to design and code)
 3. they still dont effectively address the variety problem (no fixed schema)
-4. they also not as agile and scalable as native nosql for adding scale as and when needed
+4. they also are not as agile and scalable as native nosql for adding scale as and when needed
 
-## how
+## enter NoSQL
+
+necessity is the mother of invention. for the above reasons the new age Internet companies couldnt sustain the growth they were having with traditional databases. they looked for alternatives and NoSQL stores was re-born. NoSQL wasnt new but it got popular as the amount of data generated and stored grew exponentially and it was widely adopted by these companies.
+
+it got popular because
+
+- it gave almost linear scale of operations when you add more nodes / storage (scale out)
+- most NoSQL stores were open source (or based on other open source) or not very expensive to license or purpose built for a company's workload
+- it worked on commodity hardware and thus were cheap to build / upgrade / update / replace
+- it was super geeky and cool (in the geeky circles obviously)
+
+through the years these companies built their businesses on these NoSQL stores and were widely successful. soon news of NoSQL stores got out and it stared catching people's attention (in database circles). by that time some of these companies published whitepapers on their NoSQL stores, people from these companies left and started their own NoSQL stores products and thus NoSQL started gaining popularity. news about NoSQL spread in the traditional enterprises who by the way were also struggling to manage increasing data volumes using traditional RDBMS stores. enter Big Data (we need a trend every few years to sell old wine in a new bottle) and 
