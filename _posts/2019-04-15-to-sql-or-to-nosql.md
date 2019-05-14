@@ -11,7 +11,7 @@ sql vs nosql. which is better ? but first a nosql joke.
 jokes aside, this is debate that i hear very often at my customer's (sometimes in my head too). in most large organizations (read non startups), sql / rdbms has ruled the database world for decades. these organizations have run their entire businesses on traditional relational database systems for ages. it would be fair to comment that pretty much the entire world's IT systems run on rdbms. but in the last few years (5-7 years), we have the popularity of nosql rise especially with google's, netflix's of the world. they have proved that nosql database's can also run mission critical real-time applications.
 
 but before we get into the details of sql vs nosql, lets first understand what nosql is.
-popular (mostly ignorance & hearsay) belief is nosql stands for NO SQL (while it originated that way). well actually it stands for Not Only SQL. that definition itself should lay rest some of the sql vs nosql debate, however there is a lot more to understand why nosql became popular and how should you think about it.
+popular (mostly ignorance & hearsay) belief is nosql stands for NO SQL (while it originated that way). well broadly now it stands for Not Only SQL. that definition itself should lay rest some of the sql vs nosql debate, however there is a lot more to understand why nosql became popular and how should you think about it.
 
 i liked this definition from a blog post on <www.techtarget.com>
 
@@ -59,6 +59,24 @@ it got popular because
 - it gave almost linear scale of operations when you add more nodes / storage (scale out)
 - most NoSQL stores were open source (or based on other open source) or not very expensive to license or purpose built for a company's workload
 - it worked on commodity hardware and thus were cheap to build / upgrade / update / replace
+- in some cases it was faster than traditional rdbms
+- most of these offered some sort of schema less / flexible schema storage models
 - it was super geeky and cool (in the geeky circles obviously)
 
-through the years these companies built their businesses on these NoSQL stores and were widely successful. soon news of NoSQL stores got out and it stared catching people's attention (in database circles). by that time some of these companies published whitepapers on their NoSQL stores, people from these companies left and started their own NoSQL stores products and thus NoSQL started gaining popularity. news about NoSQL spread in the traditional enterprises who by the way were also struggling to manage increasing data volumes using traditional RDBMS stores. enter Big Data (we need a trend every few years to sell old wine in a new bottle) and 
+through the years these companies built their businesses on these NoSQL stores and were wildly successful. soon news of NoSQL stores got out and it stared catching people's attention (in database circles). by that time some of these companies published whitepapers on their NoSQL stores, people from these companies left and started their own NoSQL stores products and thus NoSQL started gaining popularity. news about NoSQL spread in the traditional enterprises too who by the way were also struggling to manage increasing data volumes using traditional RDBMS stores. 
+
+enter Big Data (we need a trend every few years to sell old wine in a new bottle) and other trends around mobility, hyper-personalization, digital transformation etc, new business models or disruption of existing business models by startups / fintech's, traditional companies saw a pull towards NoSQL driven by need (same as what started it but probably at a lower scale), emergence of public clouds which made these technologies easier to adopt, talent moving across companies (startups to traditional companies), and in some sense cool factor of using NoSQL technology.
+
+### then why isnt rdbms / sql dead ?
+
+NoSQL swept the market with its advantages, new age coolnes , silicon valley hype & unicorn's backed claims, but was stopped in its tracks as it approached the gates of RDBMS (read dba fiefdom's) kingdom. nobody likes change especially people who have built companies / careers spanning decades of building / operating rdbms platforms. but it just wasnt the threat to rdbms platforms being replaced by NoSQL that presented a challenge for NoSQL dominance, there also were some actual issues with the then NoSQL platforms that required attention. what were they ?
+
+- most NoSQL (then) platforms didnt provide true ACID properties which were a staple in the rdbms world and rightly so as mission crtical applications required truly ACID transactions. infact largely rdbms still rules where ACID transactions are required including the startups, unicorns, netflix's & google's of the world (emergence of polyglot stores).
+
+- many NoSQL store compromise consistency (eventual consistency) in favor of performance, availability & scale. this meant stale reads in some cases especially when you are running in distributed mode with large concurrency (this issue is addressed to some extent by platforms like ComosDB by offering additional consistency models)
+
+- No support for SQL. wasnt is obvious from the name NoSQL that SQL wont be supported ? but SQL still rules the world when it comes to writing applications that perform CRUD operations and entire the world of Reporting, BI & Analytics. for decades applications have been written to use SQL to interact with data. developers have grown to understand SQL to write SQL code (stored procedures) to build business logic in these applications. reporting & BI tools are built around SQL. Business users understand SQL to query data for their work. so having No support for SQL didnt make it favorable for developers, dba's, report builders, business users, BI tools to adopt NoSQL platforms. while there is a lot of work going on in the NoSQL world to support SQL, this still remains one of the biggest blockers for adopting NoSQL.
+
+`you can take the data out of SQL but you cant take the SQL out of data` (yeah i came up with that or so i would like to beleive).
+
+- 
