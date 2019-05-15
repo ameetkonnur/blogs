@@ -79,4 +79,10 @@ NoSQL swept the market with its advantages, new age coolnes , silicon valley hyp
 
 `you can take the data out of SQL but you cant take the SQL out of data` (yeah i came up with that or so i would like to believe).
 
-- using NoSQL requires a change in how you design data stores (schema). also the way you write application code against NoSQL changes significantly. this is primarily because you need to think about distribution logic for data (as NoSQL are primarily scale-out data stores). this poses a significant change on how data stores were traditionaly designed and accessed in the rdbms world. so now developers & dba's need to learn how to work with the NoSQL distributed paradigm. while its not rocket science (or quantum computing) nevertheless its a new skillset that they need to learn.
+- using NoSQL requires a change in how you design data stores (schema). also the way you write application code against NoSQL changes significantly. this is primarily because you need to think about distribution logic for data (as NoSQL are primarily scale-out data stores). this poses a significant change on how data stores were traditionaly designed and accessed in the rdbms world. so now developers & dba's need to learn how to work with the NoSQL distributed paradigm. while its not rocket science (or quantum computing) nevertheless its a new skillset that they need to learn. change is always hard especially for existing apps / people.
+
+- last but not the least, not every application requires a NoSQL. Most cases RDBMS just do fine even for huge scalability and performance requirements.
+
+##  how will this debate / war end ?
+
+i am no prophecy teller, but the trend indicates to a co-existence of NoSQL and SQL technologies (polyglot persistance). the perfect solution would be to a have a platform that combines the strength of both to have a balanced solution (yin & yang). a lot of players (traditional software biggies and startups) are working towards having a platform that work distributed, has flexible schema, supporrts ACID, better consistency models, events, availability & DR, change feeds & above all SQL to interact with the store. also it's not just about the platform but the surrounding tooling around it as well like development IDE's, ETL, CDC, Reporting, BI, OLAP. 
