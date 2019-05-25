@@ -29,6 +29,10 @@ now that you understand concurrency, you would also understand the implications 
 
 given a set of computer resources (processors and cores) designing for supporting higher concurrency may also mean higher the time per request it would take. this is because if the one core has to do 1000 jobs at a given time, it will keep switching between these jobs to do part of it and thus impacting the time per job. also one needs to understand that every context switch in itself has an overhead (usually very small but at higher concurrency can be significant if the quantum of job is higher). This is also evident when we try to multitask. jobs that require higher focus (quantum of job is higher) takes more effort to switch between. on the contrary jobs that are small (quantum of effort is small) have a lower overhead on context switching and sometimes may not require context switching as they take a very small fraction of time to complete (example on how we can think while doing mundane jobs like driving on the same road everyday largely through muscle memory).
 
+typically oltp requests are very small (few bytes). for context switching (which would involve persisting this state to some store to move to another job and retreiving it back to execute the previous one) the overhead is very small or negligible. in datawarehouse world a request could be of sizes 100x - 10000x of a typical oltp request. context switching between these requests is extremely expensive and would hamper the overall performance of the system. effectively none of the requests would be served on time.
+
+another real-world example of this is the difference between a cataract operation and a open heart surgery. its common (in developing countries) for eye doctors to conduct multiple cataract operations at once (procedure is fairly standard, low risk & quick) and allows for context switching. but an open heart surgery requires dedicated focus for hours as the risk is high, highly complex and time consuming. for a heart doctor to do multiple open hearts at the same time wouldnt be possible as the cost of context switching and the risk thereby (of no or adverse outcome) is very high.
+
 given the above why do datawarehouses suffer from poor concurrency compared to other database systems (usually OLTP / ODS kinds) inspite of having higher magnitude's of computer resources. this is because of two differentiators
 
 - datawarehouse workloads are inherently complex (queries span billions of data records, complex computation, spread across multiple nodes) which essentially means a higher quantum of work.
@@ -48,4 +52,4 @@ to read more about this you can check <https://docs.microsoft.com/en-us/azure/sq
 
 enjoy!
 
-disclaimer : i am neither an expert on datawarehouse technologies nor on core processor compute models. this is just an obeservation from my experience over the years looking at why certain things may work the way they do. i am happy to be corrected if i am way out of line in my understanding. thank you.
+disclaimer : i am neither an expert on datawarehouse technologies nor on processor compute models. this is just an obeservation from my experience over the years looking at why certain things may work the way they do. i am happy to be corrected if i am way out of line in my understanding. thank you.
