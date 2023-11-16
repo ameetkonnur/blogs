@@ -1,0 +1,116 @@
+# Scaling Azure OpenAI with Azure API Management and Azure Front Door
+
+## Introduction
+
+This guide is designed to provide a detailed and insightful approach for scaling Azure OpenAI services using Azure API Management (APIM) and Azure Front Door, focusing on key decision-making aspects to help users understand the strategy behind the process.
+
+## Prerequisites
+
+- An active Azure account with the necessary privileges.
+- A basic understanding of Azure services and the Azure portal.
+
+## Detailed Procedure with Decision Points
+
+### Step 1: Creation of Azure API Management Instance
+
+#### Action
+- Initiate the process by creating a new APIM instance in the Azure portal.
+
+#### Tier Selection
+- Choose a tier based on your performance and scalability requirements, considering factors like expected traffic and feature needs.
+
+#### Decision Rationale
+- APIM is critical for managing API traffic, crucial for controlling and monitoring Azure OpenAI services usage.
+
+#### Reference
+- [Azure API Management documentation](https://docs.microsoft.com/en-us/azure/api-management/)
+
+### Step 2: Importing Azure OpenAI API Reference
+
+#### Action
+- Import the Azure OpenAI API reference using the OpenAPI specification.
+
+#### Issue Resolution
+- In case of an invalid Web Service URL error, manually adjust the Server URL to ensure proper integration.
+
+#### Decision Rationale
+- Using OpenAPI specifications standardizes and simplifies the API integration process.
+
+#### Reference
+- Azure OpenAI OpenAPI Specification: [Azure OpenAI OpenAPI specification](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference)
+
+### Step 3: Configuring Managed Identity and Role Assignments
+
+#### Action
+- Configure the Managed Identity for the APIM instance.
+
+#### Role Assignment
+- Assign the “Cognitive Services Azure OpenAI User” role appropriately.
+
+#### Decision Rationale
+- Managed Identities enhance security and automate access management, crucial for maintaining secure access to Azure OpenAI services.
+
+#### Reference
+- [Managed Identity documentation](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/)
+
+### Step 4: Defining Inbound Policies in API Management
+
+#### Action
+- Implement an Inbound Policy to enable Managed Identity for backend connections.
+
+#### Policy Configuration
+- This ensures secure communication between APIM and Azure OpenAI.
+
+#### Decision Rationale
+- Inbound policies are key for handling requests securely and efficiently.
+
+#### Reference
+- [Azure API Management policies documentation](https://docs.microsoft.com/en-us/azure/api-management/api-management-policies)
+
+### Step 5: Access Management with Products & Subscriptions
+
+#### Action
+- Utilize APIM's Products & Subscriptions for user access management.
+
+#### Configuration Aspects
+- Manage Authentication, Logging, and Throughput via APIM policies.
+
+#### Decision Rationale
+- This step is essential for scaling user access management in a controlled and efficient manner.
+
+#### Reference
+- [APIM Subscriptions documentation](https://docs.microsoft.com/en-us/azure/api-management/api-management-subscriptions)
+
+### Step 6: Implementing Azure Front Door for Scalability
+
+#### Action
+- Use Azure Front Door for load balancing across multiple Azure OpenAI instances.
+
+#### Configuration Steps
+  - Set up Azure Front Door to balance traffic among Azure OpenAI instances.
+
+#### Decision Rationale
+- Azure Front Door offers advanced routing and load balancing capabilities, essential for high traffic scenarios and service availability.
+
+#### Key Management
+- Managed Identities simplify key management significantly.
+
+#### Consistency in Deployment IDs
+- Maintaining consistent Deployment IDs across instances streamlines management.
+
+#### Reference
+- [Azure Front Door documentation](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-overview)
+
+## Conclusion
+
+This guide provides a comprehensive understanding of scaling Azure OpenAI using APIM and Azure Front Door. It offers strategic insights beyond procedural steps, enhancing the effectiveness of the setup.
+
+## Additional Resources and References
+
+- [Azure OpenAI documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/azure-openai/)
+- [API Management Best Practices](https://docs.microsoft.com/en-us/azure/api-management/api-management-best-practices)
+- [Load Balancing with Azure Front Door](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-load-balancing)
+
+---
+
+**Note**: Always test and validate procedures in a non-production environment before implementation. Stay updated with Azure documentation for any changes in features or procedures.
