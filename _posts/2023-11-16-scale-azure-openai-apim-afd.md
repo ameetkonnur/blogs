@@ -1,9 +1,9 @@
 ---
-title: Comprehensive Guide for Setting Up Azure API Management, Azure Front Door with Azure OpenAI
+title: Minimalist Guide for Setting Up Azure API Management, Azure Front Door with Azure OpenAI
 ---
 
 ## Introduction
-Integrating Azure OpenAI with Azure API Management (APIM) allows for efficient management, scalability, and secure access to Azure OpenAI capabilities. This guide provides detailed instructions for setting up and managing this integration.
+Integrating Azure OpenAI with Azure API Management (APIM) allows for efficient management, scalability, and secure access to Azure OpenAI capabilities. This guide provides brief instructions for setting up and managing this integration.
 
 ## 1. Create an Azure API Management Instance
 **Objective:** Establish the foundation for managing Azure OpenAI APIs by creating an APIM instance.
@@ -97,7 +97,7 @@ Integrating Azure OpenAI with Azure API Management (APIM) allows for efficient m
 **Reasoning:** Consistency in deployment IDs is crucial for seamless operation and integration.
 
 ## Conclusion
-This comprehensive guide details the setup and management of Azure API Management integrated with Azure OpenAI, focusing on aspects like security, scalability, and efficient load management. Each step includes reasoning to understand the importance and impact of the actions taken.
+This minimalist guide mentions the setup and management of Azure API Management integrated with Azure OpenAI, focusing on aspects like security, scalability, and efficient load management. Each step includes reasoning to understand the importance and impact of the actions taken.
 
 ## Additional Resources
 - [Azure API Management Documentation](https://docs.microsoft.com/en-us/azure/api-management/)
