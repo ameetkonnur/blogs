@@ -15,10 +15,7 @@ Find and Assign Roles to APIM Managed Identity: Identify the APIM Managed Identi
 
 ## 5. Implementing Inbound Policy
 Add an Inbound Policy in APIM: In the API definitions of APIM, insert an inbound policy. This policy should enable APIM to use its Managed Identity for connecting to Azure OpenAI. The policy might resemble:
-
-\`\`\`xml
 <authentication-managed-identity resource="https://cognitiveservices.azure.com/" />
-\`\`\`
 
 ## 6. Testing the APIM API Endpoint
 Verify Functionality: Ensure the new policy and API definitions are working correctly by testing the APIM API endpoint.
