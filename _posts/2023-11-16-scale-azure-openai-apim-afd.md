@@ -1,100 +1,46 @@
 ---
 title: Minimalist Guide for Setting Up Azure API Management, Azure Front Door with Azure OpenAI
 ---
+## 1. Creating an APIM Instance
+Start by creating an Azure API Management (APIM) instance. You can select any tier that suits your requirements.
 
-## Introduction
-Integrating Azure OpenAI with Azure API Management (APIM) allows for efficient management, scalability, and secure access to Azure OpenAI capabilities. This guide provides brief instructions for setting up and managing this integration.
+## 2. Importing Azure OpenAI API Reference
+Download and Modify the Open API Specification: Obtain the Open API specification from Azure. You'll need to edit the JSON file to hardcode your Azure OpenAI endpoint URL. This step fixes the error of an invalid Web Service URL during import.
 
-## 1. Create an Azure API Management Instance
-**Objective:** Establish the foundation for managing Azure OpenAI APIs by creating an APIM instance.
+## 3. Configuring the APIM URL
+Add a Suffix: After importing the OpenAI API reference, append a suffix, such as 'openai', to the base URL of your APIM. This adjustment is necessary for compatibility with existing OpenAI SDKs that use Azure OpenAI endpoints.
 
-### Steps:
-1. Log into Azure Portal.
-2. Navigate to "Create a resource" > "Integration" > "API Management".
-3. Select a suitable tier for your APIM instance. The choice of tier can vary based on your needs but isn't critical for the initial setup.
+## 4. Setting Up Managed Identity
+Find and Assign Roles to APIM Managed Identity: Identify the APIM Managed Identity and assign it the “Cognitive Services OpenAI User” role. This can be done at the level of the Azure OpenAI resource, the Resource Group, or the Subscription, depending on your preferred scope of control.
 
-**Reasoning:** Any tier is sufficient for initial setup, but consider future scalability and feature requirements.
+## 5. Implementing Inbound Policy
+Add an Inbound Policy in APIM: In the API definitions of APIM, insert an inbound policy. This policy should enable APIM to use its Managed Identity for connecting to Azure OpenAI. The policy might resemble:
 
-## 2. Import Azure OpenAI API Reference
-**Objective:** Import Azure OpenAI API definitions to APIM for centralized management.
+\`\`\`xml
+<authentication-managed-identity resource="https://cognitiveservices.azure.com/" />
+\`\`\`
 
-### Steps:
-1. Obtain the Open API specification for Azure OpenAI.
-2. In APIM, import this specification. An error related to the Web Service URL is expected.
+## 6. Testing the APIM API Endpoint
+Verify Functionality: Ensure the new policy and API definitions are working correctly by testing the APIM API endpoint.
 
-**Reasoning:** This error typically occurs due to the variable nature of the server URL in the OpenAI API specification.
+## 7. Managing Access and Control
+Utilize APIM Products & Subscriptions: Use APIM’s features like Products & Subscriptions to manage user access. Set policies regarding authentication, logging, and throughput.
 
-## 3. Fix Web Service URL Error and Modify APIM URL
-**Objective:** Resolve the Web Service URL error and modify the APIM base URL to ensure compatibility with OpenAI SDKs.
+## 8. Handling Increased Load
+Scaling with Multiple Azure OpenAI Instances: As user demand increases, additional Azure OpenAI instances may be required. Although APIM isn’t designed as a load balancer, you can use custom scripts in policies as a temporary solution. However, this method is not ideal for long-term scalability.
 
-### Steps:
-1. Replace the variable server URL in the imported API specification with the actual Azure Open AI endpoint URL.
-2. Append a suffix (e.g., 'openai') to the base APIM URL.
+## 9. Integrating Azure Front Door for Load Balancing
+Set Up Azure Front Door: Implement Azure Front Door to manage traffic between multiple Azure OpenAI instances.
+Configure APIM with Azure Front Door as the Backend: Set up the route like `https://<your-front-door-name>.<some-random-string>.z01.fd.net`.
+Configure Origin Group in Azure Front Door: In the Origin Group settings of Azure Front Door, add the Azure OpenAI endpoints, such as `https://<AOAI-Instance-01.openai.azure.com>` and `https://<AOAI-Instance-02.openai.azure.com>`.
 
-**Reasoning:** Hardcoding the server URL and adding a suffix ensures that the APIM endpoints work seamlessly with existing OpenAI SDKs that utilize Azure OpenAI endpoints.
+## 10. Streamlining Access Management
+Access with Managed Identities: Ensure the APIM Managed Identity has access to all Azure OpenAI instances. This setup simplifies the management of access keys.
 
-## 4. Configure Managed Identity and Permissions
-**Objective:** Set up Managed Identity in APIM for secure and efficient access control to Azure OpenAI.
+## 11. Ensuring Consistency in Deployment IDs
+Maintain Identical Deployment IDs: It's important that all Azure OpenAI instances have deployments with the same name to ensure consistency in the Deployment IDs used in Azure OpenAI calls.
 
-### Steps:
-1. Identify and access the APIM Managed Identity.
-2. Assign the “Cognitive Services OpenAI User” role to this identity at the desired scope (resource, resource group, or subscription).
-
-**Reasoning:** Using Managed Identity simplifies credential management and enhances security.
-
-## 5. Add Inbound Policy
-**Objective:** Implement an inbound policy to authenticate APIM requests to Azure OpenAI using Managed Identity.
-
-### Policy Example:
-`<authentication-managed-identity resource="https://cognitiveservices.azure.com/" />`
-
-### Steps:
-1. Navigate to the API definitions in APIM and add the above policy.
-
-**Reasoning:** This policy ensures that APIM uses its Managed Identity for secure backend communication.
-
-## 6. Test API Endpoint
-**Objective:** Validate the configuration by testing the APIM API endpoint.
-
-### Steps:
-1. Use a tool like Postman to test the API endpoint.
-
-**Reasoning:** Testing confirms that the policy and API definitions are correctly implemented.
-
-## 7. Manage Access with Products & Subscriptions
-**Objective:** Use APIM's Products and Subscriptions to manage user access and control aspects like authentication, logging, and throughput.
-
-### Steps:
-1. Create and configure Products in APIM.
-2. Associate these with Subscriptions to control access.
-
-**Reasoning:** This approach offers a structured way to manage different consumer groups and usage policies.
-
-## 8. Scale with Additional Azure OpenAI Instances
-**Objective:** Scale the solution by adding more Azure OpenAI instances as user demand increases.
-
-### Steps:
-1. Monitor API usage and add Azure OpenAI instances as required.
-
-**Reasoning:** APIM isn't inherently a load balancer; additional instances are needed to handle increased load.
-
-## 9. Implement Azure Front Door for Load Balancing
-**Objective:** Use Azure Front Door for efficient load balancing across multiple Azure OpenAI instances.
-
-### Steps:
-1. Set up Azure Front Door.
-2. Configure it as the backend for APIM.
-3. Ensure Azure Front Door routes requests among the Azure OpenAI instances.
-
-**Reasoning:** Azure Front Door provides a robust and scalable solution for load distribution, overcoming APIM's limitations in this aspect.
-
-## 10. Maintain Consistent Deployment IDs
-**Objective:** Ensure all Azure OpenAI instances have identical deployment IDs.
-
-### Steps:
-1. When setting up or scaling with new Azure OpenAI instances, use the same deployment ID across all instances.
-
-**Reasoning:** Consistency in deployment IDs is crucial for seamless operation and integration.
+This structured approach helps in setting up and managing Azure APIM with Azure OpenAI, ensuring scalability, efficient load management, and streamlined access control. Regularly reviewing and updating these configurations is essential to keep up with evolving demands and Azure service updates.
 
 ## Conclusion
 This minimalist guide mentions the setup and management of Azure API Management integrated with Azure OpenAI, focusing on aspects like security, scalability, and efficient load management. Each step includes reasoning to understand the importance and impact of the actions taken.
